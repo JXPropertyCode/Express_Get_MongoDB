@@ -1,3 +1,6 @@
+// need this to be able to access .env file
+require('dotenv').config();
+
 // Load express module
 const express = require("express");
 const posts = require('./routes/posts');
@@ -7,7 +10,7 @@ const app = express();
 
 // Mongoose connection
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/nodemongo", {
+mongoose.connect(process.env.MONGODB_URL, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 });
